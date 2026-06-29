@@ -1,0 +1,72 @@
+{
+  "name": "@aliou/pi-edgee",
+  "version": "0.0.1",
+  "license": "MIT",
+  "type": "module",
+  "private": false,
+  "keywords": [
+    "pi-package",
+    "pi-extension",
+    "pi",
+    "edgee",
+    "provider",
+    "gateway"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aliou/pi-edgee"
+  },
+  "pi": {
+    "extensions": [
+      "./extensions/provider/index.ts"
+    ]
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "src",
+    "extensions",
+    "README.md",
+    "!src/**/*.test.ts"
+  ],
+  "peerDependencies": {
+    "@earendil-works/pi-coding-agent": ">=0.79.0"
+  },
+  "dependencies": {
+    "@earendil-works/pi-ai": "$@earendil-works/pi-coding-agent"
+  },
+  "devDependencies": {
+    "@aliou/biome-plugins": "^0.9.0",
+    "@biomejs/biome": "^2.5.1",
+    "@changesets/cli": "^2.31.0",
+    "@earendil-works/pi-coding-agent": "0.79.0",
+    "@types/node": "^25.9.2",
+    "husky": "^9.1.7",
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.8"
+  },
+  "pnpm": {
+    "overrides": {
+      "@earendil-works/pi-ai": "$@earendil-works/pi-coding-agent"
+    }
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "lint": "biome check",
+    "format": "biome check --write",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "check:lockfile": "pnpm install --frozen-lockfile --ignore-scripts",
+    "prepare": "[ -d .git ] && husky || true",
+    "changeset": "changeset",
+    "version": "changeset version",
+    "release": "pnpm changeset publish"
+  },
+  "packageManager": "pnpm@10.26.1",
+  "peerDependenciesMeta": {
+    "@earendil-works/pi-coding-agent": {
+      "optional": true
+    }
+  }
+}
