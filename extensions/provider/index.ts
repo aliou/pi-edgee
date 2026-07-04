@@ -6,6 +6,7 @@ import type {
 } from "@earendil-works/pi-coding-agent";
 import {
   type BuiltInModelLookup,
+  createEdgeeLookup,
   EDGEE_API_KEY_ENV,
   EDGEE_ATTRIBUTION_HEADERS,
   EDGEE_OVERFLOW_PATTERN,
@@ -99,8 +100,7 @@ export default async function (pi: ExtensionAPI) {
   if (cache) registerEdgeeProvider(pi, cache.models);
 
   pi.on("session_start", (_event, ctx: ExtensionContext) => {
-    const lookup: BuiltInModelLookup = (provider, modelId) =>
-      ctx.modelRegistry.find(provider, modelId) ?? undefined;
+    const lookup = createEdgeeLookup(ctx.modelRegistry, cache?.models);
 
     void revalidateModels(
       pi,

@@ -21,7 +21,7 @@ export EDGEE_API_KEY=...
 - Registers an `edgee` provider in Pi.
 - Uses Edgee's OpenAI-compatible Gateway API directly at `https://edgee.io/v1`, not an SDK.
 - Fetches models from `GET https://edgee.io/v1/models` when `EDGEE_API_KEY` is available. Model ids use the `{provider}/{model}` format (e.g. `openai/gpt-5.2`); the `owned_by` field exposes the upstream provider.
-- Falls back to a hardcoded model list (enriched with pricing/limits from models.dev) when model fetching is unavailable.
+- Enriches fetched models from Pi's built-in model registry. For Edgee-only providers such as `meta` or `qwen`, it falls back to OpenRouter models in the registry for matching upstream model metadata.
 - Uses Pi's native `openai-completions` provider path, so tool calls, streaming usage, and context-overflow normalization all work.
 - Normalizes upstream context-overflow errors through Edgee into Pi's `context_length_exceeded` signal.
 

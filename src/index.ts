@@ -4,3 +4,4 @@ export * from "./edgee/context-overflow";
 export * from "./edgee/env";
 export * from "./edgee/models";
 export * from "./edgee/models-cache";
+export * from "./edgee/registry-lookup";
