@@ -1,5 +1,11 @@
 # @aliou/pi-edgee
 
+## 0.1.2
+
+### Patch Changes
+
+- d1d9952: Update the Edgee provider for Pi 0.80.10 and use Pi's model store for dynamic model caching.
+
 ## 0.1.1
 
 ### Patch Changes
